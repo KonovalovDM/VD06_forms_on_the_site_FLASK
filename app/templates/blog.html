@@ -3,58 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
+    <title>Анкетная форма</title>
+    <!--Подключение стилей Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
 <body>
 
-<div class="container">
-
-
-  <h2>Простая анкетная форма</h2>
-# определяет форму с именем, городом, хобби и возрастом для отправки данных методом POST<br><br>
+<div class="container mt-5">
+    <h2 class="mb-4">Простая анкетная форма</h2>
+    <!-- Форма с использованием классов Bootstrap -->
     <form action="/" method="post">
-        <div>
-            # создает метку для поля ввода имени<br>
-            <label for="name">Имя:</label><br>
-                # создает текстовое поле для ввода имени с обязательным заполнением<br>
-                <input type="text" id="name" name="name" required>
-            <br><br>
-            # создает метку для поля ввода города<br>
-            <label for="city">Город:</label><br>
-                # создает текстовое поле для ввода города с обязательным заполнением<br>
-                <input type="text" id="city" name="city" required>
-            <br><br>
-            # создает метку для поля ввода хобби<br>
-            <label for="hobby">Хобби:</label><br>
-                # создает текстовое поле для ввода хобби с обязательным заполнением<br>
-                <textarea id="hobby" name="hobby" row="3" required></textarea>
-            <br><br>
-            # создает метку для поля ввода возраста<br>
-            <label for="age">Возраст</label><br>
-                # создает текстовое поле для ввода возраста с обязательным заполнением<br>
-                <input type="text" id="age" name="age" required>
-            <br><br>
-            # создает кнопку для отправки формы<br>
-            <button type="submit">Отправить данные в форму</button><br>
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
         </div>
+        <div class="form-group">
+            <label for="city">Город:</label>
+            <input type="text" id="city" name="city" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="hobby">Хобби:</label>
+            <textarea id="hobby" name="hobby" rows="3" class="form-control" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="age">Возраст:</label>
+            <input type="text" id="age" name="age" class="form-control" required>
+        </div><br>
+        <button type="submit" class="btn btn-primary">Отправить данные в форму</button>
     </form>
     <hr>
-    <h2>Заполненная форма анкеты</h2>
+    <h2 class="mt-4">Заполненная форма анкеты</h2>
 
+    <!-- Отображение данных с использованием Bootstrap -->
     {% for post in posts %}
-        <div>
-            <h4>{{ post.name}}</h4>
-            <p>{{ post.city}}</p>
-            <p>{{ post.hobby}}</p>
-            <p>{{ post.age}}</p>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h4 class="card-title">{{ post.name }}</h4>
+                <p class="card-text"><strong>Город:</strong> {{ post.city }}</p>
+                <p class="card-text"><strong>Хобби:</strong> {{ post.hobby }}</p>
+                <p class="card-text"><strong>Возраст:</strong> {{ post.age }}</p>
+            </div>
         </div>
-    {% endfor%}
-
-
+    {% endfor %}
 </div>
 
+<!-- Подключение скриптов Bootstrap -->
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
